@@ -82,7 +82,7 @@ import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocaliz
 
 
 //@TeleOp(name="SKYSTONE Vuforia Nav", group ="Concept")
-@Autonomous(name = "Polaris 1 Skystone")
+@Autonomous(name = "Polaris 1 Skystone Vuforia")
 //@Disabled
 public class polarisVuforiaNav1Skystone extends LinearOpMode {
 
@@ -356,10 +356,27 @@ public class polarisVuforiaNav1Skystone extends LinearOpMode {
                 float yinch= y/mmPerInch;
                 float x = translation.get(0);
                 float xinch= x/mmPerInch;
+                float stoneDistanceMargin=40; //in mm
                 if (y < 0) {
-                    telemetry.addData("Move Left", yinch);
+                    telemetry.addData("---Stone on Left", yinch);
+                    if (Math.abs(y) > stoneDistanceMargin) {
+                        telemetry.addData("Move Left", yinch);
+                        //vishesh_move("LEFT","SLOW");
+                    } else {   //NOTE: This is where you grab the stone and move to load.
+                        telemetry.addData("Stop", yinch);
+                        //vishesh_move("STOP","SLOW");
+                        //vishesh_grabStone("GET_STONE");
+                    }
                 }else{
-                    telemetry.addData("Move Right", yinch);
+                    telemetry.addData("Stone on Right-----", yinch);
+                    if (Math.abs(y) > stoneDistanceMargin) {
+                        telemetry.addData("Move Right", yinch);
+                        //vishesh_move("RIGHT","SLOW");
+                    } else {   //NOTE: This is where you grab the stone and move to load.
+                        telemetry.addData("Stop", yinch);
+                        //vishesh_move("STOP","SLOW");
+                        //vishesh_grabStone("GET_STONE");
+                    }
                 }
 
             }
