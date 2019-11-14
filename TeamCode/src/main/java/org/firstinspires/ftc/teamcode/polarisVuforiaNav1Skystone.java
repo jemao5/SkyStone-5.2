@@ -347,35 +347,36 @@ public class polarisVuforiaNav1Skystone extends LinearOpMode {
                 //cw add this
 
                 String tname= stoneTarget.getName();
-                if (tname.equals("Stone Target")){
+                if (tname.equals("Stone Target")) {
                     foundSkystone = true;
                     telemetry.addData("Visible Target", tname);
-                }
 
-                float y = translation.get(1);
-                float yinch= y/mmPerInch;
-                float x = translation.get(0);
-                float xinch= x/mmPerInch;
-                float stoneDistanceMargin=40; //in mm
-                if (y < 0) {
-                    telemetry.addData("---Stone on Left", yinch);
-                    if (Math.abs(y) > stoneDistanceMargin) {
-                        telemetry.addData("Move Left", yinch);
-                        //vishesh_move("LEFT","SLOW");
-                    } else {   //NOTE: This is where you grab the stone and move to load.
-                        telemetry.addData("Stop", yinch);
-                        //vishesh_move("STOP","SLOW");
-                        //vishesh_grabStone("GET_STONE");
-                    }
-                }else{
-                    telemetry.addData("Stone on Right-----", yinch);
-                    if (Math.abs(y) > stoneDistanceMargin) {
-                        telemetry.addData("Move Right", yinch);
-                        //vishesh_move("RIGHT","SLOW");
-                    } else {   //NOTE: This is where you grab the stone and move to load.
-                        telemetry.addData("Stop", yinch);
-                        //vishesh_move("STOP","SLOW");
-                        //vishesh_grabStone("GET_STONE");
+
+                    float y = translation.get(1);
+                    float yinch = y / mmPerInch;
+                    float x = translation.get(0);
+                    float xinch = x / mmPerInch;
+                    float stoneDistanceMargin = 40; //in mm
+                    if (y < 0) {
+                        telemetry.addData("---Stone on Left", yinch);
+                        if (Math.abs(y) > stoneDistanceMargin) {
+                            telemetry.addData("Move Left", yinch);
+                            //vishesh_move("LEFT","SLOW");
+                        } else {   //NOTE: This is where you grab the stone and move to load.
+                            telemetry.addData("Stop", yinch);
+                            //vishesh_move("STOP","SLOW");
+                            //vishesh_grabStone("GET_STONE");
+                        }
+                    } else {
+                        telemetry.addData("Stone on Right-----", yinch);
+                        if (Math.abs(y) > stoneDistanceMargin) {
+                            telemetry.addData("Move Right", yinch);
+                            //vishesh_move("RIGHT","SLOW");
+                        } else {   //NOTE: This is where you grab the stone and move to load.
+                            telemetry.addData("Stop", yinch);
+                            //vishesh_move("STOP","SLOW");
+                            //vishesh_grabStone("GET_STONE");
+                        }
                     }
                 }
 
